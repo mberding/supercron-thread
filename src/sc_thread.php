@@ -7,9 +7,9 @@ class sc_thread {
 	var $api_key;
 	var $api_secret;
 	var $external_id;
-	var $force_abort;
+	var $force_abort = true;
 	var $json;
-	var $grace_padding = 0;
+	var $grace_padding = 5;
 	var $id_thread;
 	
 	
