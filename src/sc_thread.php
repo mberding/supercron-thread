@@ -24,7 +24,7 @@ class sc_thread {
 	}
 	
 	function baseURL() {
-		$url = 'https://supercron.me/api/?';
+		$url = 'https://supercron.me/api/threads.php?';
 		$url .= '&api_key='.$this->api_key;
 		$url .= '&api_secret='.$this->api_secret;
 		return $url;
