@@ -1,0 +1,23 @@
+{
+    "name": "mberding/supercron-thread",
+    "description": "Keep SuperCron-launched items from racing",
+    "keywords": ["SuperCron"],
+    "type": "library",
+    "homepage": "https://github.com/mberding/supercron-thread/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michae Berding",
+            "homepage": "https://github.com/mberding",
+            "role": "lead"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/sc_thread.php"
+        ]
+    }
+}
