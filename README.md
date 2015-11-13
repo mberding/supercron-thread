@@ -15,43 +15,31 @@ How to integrate into your code:
 
 ```
 $threadObj = new sc_thread(array(
-
-	// API Keys available for free at SuperCron.me
-		'api_key'=>YOUR_API_KEY_HERE,
-		'api_secret'=>YOUR_API_SECRET_HERE,
-	
-	// an unique ID of your choosing.  $_SERVER['SCRIPT_NAME'] is a good way to get going quickly
-		'external_id'=>'my unique id value',
-	
-	// max runtime
-		'max_run_seconds'=>60,
-	
-	// whether or not the object should call "exit" if the thread manager says it shouldn't run
-		'force_abort'=>true,
-	
-	// number of seconds to between graceful abort and hard abort (in this case the graceful runtime would be 55 seconds)
-		'grace_padding'=>5,
+	'api_key'=>YOUR_API_KEY_HERE,
+	'api_secret'=>YOUR_API_SECRET_HERE,
+	'max_run_seconds'=>60,
+	'external_id'=>$_SERVER['SCRIPT_NAME'] // or any string identifier
 	));
 
 
 if($threadObj->start()) {
 	/*
-		grab some database records, check email servers, 
-		whatever needs to be done to see if there's a batch 
-		of work to be done
+		Grab your records here.  Database queries or arrays
+		work well.  Something to iterate over.
 	*/
 	
 	while($iterator_of_some_kind && $threadObj->keep_running()) {
 		/*
-			process the small pieces of code here
-			if it takes longer than the runtime allows,
+			Process your records here.
+			If it takes longer than the runtime allows,
 			$threadObj->keep_running() will exit the while loop
+			gracefully.
 		*/
 	}
 	
 	/*
-		make sure to call "stop" before finishing so the system
-		knows your script ended successfully
+		Make sure to call "stop" before finishing so the system
+		knows your script ended successfully!
 	*/
 	$threadObj->stop();
 }
