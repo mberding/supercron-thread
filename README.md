@@ -1,7 +1,7 @@
 # supercron-thread
 Keep SuperCron-launched items from racing
 
-This repo is designed to be used with services from SuperCron.me.  This code will prevent your code from being executed multiple times on top of itself (race conditions).
+This repo is designed to be used with services from SuperCron.me.  This code will prevent your code from being executed multiple times on top of itself (race conditions).  It does this by limiting the run time of the script to whatever you specify, plus it prevents other copies of the script from running by checking an external resource (SuperCron.me) to see if the script is already running.  This allows you the flexability of creating a script that will be run once per minute but can process large jobs if necessary (jobs that run longer than a minute).  To do so, change the "max_run_seconds" to however long you want the maximum time to be.  The script can then be executed once per minute and this code will prevent multiple copies from running in the event there was a large queue of work to be performed.
 
 What to do:
 
